@@ -2,9 +2,18 @@ spring:
   application:
     name: service-registry
 
-  config:
-    import: "configserver:http://localhost:9000"
-
   cloud:
     config:
-      uri: http://config.platform:9000
+      uri: http://localhost:9000  # Config Server URL
+
+server:
+  port: 9001  # Eureka server port
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://localhost:9001/eureka/
+    server:
+      enable-self-preservation: false
